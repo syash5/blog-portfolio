@@ -68,7 +68,7 @@ def query_create(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            return redirect('home')
+            return HttpResponseRedirect(reverse('home_page'))
     else:
         form = Query()
     return render(request, 'blog/form.html', { 'form': form })

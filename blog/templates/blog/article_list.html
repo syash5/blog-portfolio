@@ -1,0 +1,38 @@
+{% extends 'base_layout.html' %}
+
+{% block content%}
+    <h1>Articles List</h1>
+    <div class="articles">
+    {% for article in articles %}
+
+
+<div class="container paddingTB60" >
+	<div class="row">
+
+            <!-- Blog Post Content Column -->
+        <div class="col-md-12">
+
+                 <hr>
+
+                <h4 class="lg-text">{{ article.title }}</h4>
+
+                <hr>
+
+                <!-- Preview Image -->
+                <img class="img-responsive" src="{{ article.thumb.url }}" alt="">
+
+
+                <hr>
+
+                <!-- Post Content -->
+            <p class="vsm-text">{{ article.snippet }} </p>
+            <p>{{ article.date }}</p>
+                <hr>
+
+            </div>
+    </div>
+</div>
+
+    {% endfor %}
+    </div>
+{% endblock %}

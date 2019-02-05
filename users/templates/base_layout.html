@@ -1,0 +1,169 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+       <link href='https://fonts.googleapis.com/css?family=Forum' rel='stylesheet'>
+
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>FUnKyHEaDs</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    </head>
+
+
+    <body>
+
+
+    <nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1><a href="{% url 'home_page' %}"><img src="{% static '1.png' %}" alt="funkyheads" /></a></h1>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'home_page' %}">Home</a></li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form class="logout-link" action="{% url 'user_logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                    <li><a href="{% url 'article_list' %}">Blog</a></li>
+                    <li><a href="{% url 'article_create' %}" class="highlight">New Article</a></li>
+                    <li><a href="{% url 'query_create' %}">Query</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+
+                    {% else %}
+                    <li><a href="{% url 'user_login' %}">Login</a></li>
+                    <li><a href="{% url 'register_view' %}">Signup</a></li>
+                    <li><a href="{% url 'article_list' %}">Blog</a></li>
+                    <li><a href="{% url 'query_create' %}">Query</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                    {% endif %}
+    </ul>
+  </div>
+</nav>
+
+
+
+
+        <div class="wrapper">
+            {% block content %}
+
+
+            {% endblock %}
+        </div>
+
+    </body>
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-6 mt-md-0 mt-3">
+
+          <!-- Content -->
+          <h5 class="text-uppercase">FunkyHeads</h5>
+            <p>Best Event Planners</p>
+
+
+
+
+
+
+<div class="container-fluid">
+	<div class="row">
+	    <div class="container">
+            <blockquote class="quote-card yellow-card">
+              <p>
+               “Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.”
+             </p>
+
+             <cite>
+              -Jamie Paolinetti
+            </cite>
+
+                    </blockquote>
+
+        </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+          </p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none pb-3">
+
+        <!-- Grid column -->
+        <div class="col-md-5 mb-md-0 mb-5">
+
+            <!-- Links -->
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="{% url 'article_list' %}">Blog</a>
+              </li>
+              <li>
+                <a href="{% url 'user_login' %}">Login</a>
+              </li>
+              <li>
+                <a href="{% url 'query_create' %}">Query</a>
+              </li>
+              <li>
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+              </li>
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="http://www.funkyheads.in/"> fUnKyhEaDs.in</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+
+
+
+</html>

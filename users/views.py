@@ -29,7 +29,7 @@ def register_view(request):
             new_user = authenticate(email=user.email, password=password)
             login(request, new_user)
 
-            return redirect("home")
+            return HttpResponseRedirect(reverse('home_page'))
 
         context = {"title": title, "form": form}
 

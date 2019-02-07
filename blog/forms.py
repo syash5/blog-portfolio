@@ -15,3 +15,5 @@ class Query(forms.ModelForm):
         model= Query
         fields = [ 'contact_no','full_name', 'detail']
 
+
+

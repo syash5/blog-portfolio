@@ -1,9 +1,8 @@
-from django.http import HttpResponse
-from django.http import Http404
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .models import Article
+from .models import Query
 from blog.forms import Query
 from django.contrib.auth.decorators import login_required
 from blog.forms import CreateArticle
@@ -22,17 +21,20 @@ def article_detail(request, slug):
 
 @login_required(login_url="/users/login/")
 def article_create(request):
+    title = "Create an Article"
     if request.method == 'POST':
         form = CreateArticle(request.POST, request.FILES)
         if form.is_valid():
-            # save article to db
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
             return HttpResponseRedirect(reverse('article_list'))
     else:
         form = CreateArticle()
-    return render(request, 'blog/article_create.html', { 'form': form })
+
+    context = {"title": title, "form": form}
+    return render(request, 'blog/article_create.html', context)
+
 
 
 def register_view(request):
@@ -59,19 +61,22 @@ def register_view(request):
 
         return render(request, "users/form.html", context)
 
-
 def query_create(request):
+    title= "Query"
     if request.method == 'POST':
         form = Query(request.POST, request.FILES)
         if form.is_valid():
-            # save article to db
             instance = form.save(commit=False)
-            instance.author = request.user
+            user = request.user
             instance.save()
             return HttpResponseRedirect(reverse('home_page'))
     else:
         form = Query()
-    return render(request, 'blog/form.html', { 'form': form })
+    context = {"title": title, "form": form}
+    return render(request, 'blog/form.html', context )
+
+
+
 
 def contact_us(request):
     return render(request, 'blog/contact_us.html')

@@ -7,7 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class UserRegistrationForm(UserCreationForm):
-    birth_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         model = UserProfile

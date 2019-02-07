@@ -1,8 +1,9 @@
 body{
-    background-color: DarkOrange;
+
     background-image: url(/static/);
     background-repeat-y: no-repeat;
-    background: -webkit-linear-gradient(left, DarkOrange , blue); /* Chrome 10-25, Safari 5.1-6 */
+/*    background: -webkit-linear-gradient(left, DarkOrange , blue); *//* Chrome 10-25, Safari 5.1-6 */
+/*    background-color: DarkOrange;*/
 
 }
     div {
